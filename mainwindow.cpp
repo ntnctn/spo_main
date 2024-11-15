@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "openfb2.h"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -37,14 +39,39 @@ void MainWindow::setupUi() {
 }
 
 void MainWindow::openFile() {
-    QString fileName = QFileDialog::getOpenFileName(this, "Открыть файл", "", "Text Files (*.txt);;All Files (*)");
-    if (!fileName.isEmpty()) {
-        QFile file(fileName);
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            QTextStream in(&file);
-            textEdit->setPlainText(in.readAll());
-            file.close();
+    QString name = QFileDialog::getOpenFileName(this, "Открыть файл", "", "Text Files (*.txt);;All Files (*)");
+    if (!name.isEmpty()) {
+
+        QString text;
+        QStringList content;
+
+        if(name.endsWith(".fb2"))
+        {
+            openfb2 otf;
+            otf.openFB2File(name, &text, &content);
+
+           textEdit->setText(text);
+           // ui->textBrowser->verticalScrollBar()->setValue(0);
+
         }
+        else{
+
+            QFile file(name);
+            if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                QTextStream in(&file);
+                textEdit->setPlainText(in.readAll());
+                file.close();
+            }
+
+        }
+
+
+
+    }
+    else{
+        //файл пустой -> ошибка
+
+
     }
 }
 

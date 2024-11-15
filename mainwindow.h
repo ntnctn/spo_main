@@ -8,6 +8,9 @@
 #include <QComboBox>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QString>
+#include <QXmlStreamReader>
+#include <QFile>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
