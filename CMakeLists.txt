@@ -27,6 +27,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         main.qml
         openfb2.h
         openfb2.cpp
+        librarywindow.h librarywindow.cpp
+        librarybook.h librarybook.cpp
+        librarybook.h librarybook.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET ReadPP APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
