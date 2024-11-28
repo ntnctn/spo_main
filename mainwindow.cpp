@@ -50,7 +50,7 @@ void MainWindow::openFile() {
             openfb2 otf;
             otf.openFB2File(name, &text, &content);
 
-           textEdit->setText(text);
+            textEdit->setText(text);
            // ui->textBrowser->verticalScrollBar()->setValue(0);
 
         }
